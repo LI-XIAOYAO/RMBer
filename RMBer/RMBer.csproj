@@ -1,14 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <OutputType>Library</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Authors>Lxy</Authors>
-    <Company>Lxy</Company>
-    <Description>转换成大写人民币金额。</Description>
-    <Copyright>Lxy</Copyright>
-    <PackageProjectUrl>https://github.com/LI-XIAOYAO/RMBer</PackageProjectUrl>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-  </PropertyGroup>
-
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<Authors>Lxy</Authors>
+		<Company>Lxy</Company>
+		<Description>转换成大写人民币金额。</Description>
+		<Copyright>Lxy</Copyright>
+		<PackageProjectUrl>https://github.com/LI-XIAOYAO/RMBer</PackageProjectUrl>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<RepositoryUrl>https://github.com/LI-XIAOYAO/RMBer</RepositoryUrl>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Include="..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+			<Link>https://github.com/LI-XIAOYAO/RMBer/blob/main/LICENSE</Link>
+		</None>
+	</ItemGroup>
 </Project>
