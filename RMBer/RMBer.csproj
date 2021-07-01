@@ -1,21 +1,29 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>Library</OutputType>
-		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<TargetFrameworks>netcoreapp3.1;netstandard2.0</TargetFrameworks>
 		<Authors>Lxy</Authors>
 		<Company>Lxy</Company>
 		<Description>转换成大写人民币金额。</Description>
 		<Copyright>Lxy</Copyright>
 		<PackageProjectUrl>https://github.com/LI-XIAOYAO/RMBer</PackageProjectUrl>
-		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<RepositoryUrl>https://github.com/LI-XIAOYAO/RMBer</RepositoryUrl>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageTags>RMB</PackageTags>
+		<PackageId>RMBer</PackageId>
+		<SignAssembly>true</SignAssembly>
+		<AssemblyOriginatorKeyFile>RMBer.snk</AssemblyOriginatorKeyFile>
+		<Version>1.0.1.0</Version>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp3.1|AnyCPU'">
+		<DocumentationFile>..\RMBer\RMBer.xml</DocumentationFile>
 	</PropertyGroup>
 	<ItemGroup>
 		<None Include="..\LICENSE">
 			<Pack>True</Pack>
 			<PackagePath></PackagePath>
-			<Link>https://github.com/LI-XIAOYAO/RMBer/blob/main/LICENSE</Link>
 		</None>
 	</ItemGroup>
 </Project>
