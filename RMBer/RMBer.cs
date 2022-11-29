@@ -1,5 +1,4 @@
-﻿using RMBer.Enum;
-using System;
+﻿using System;
 using System.Text.RegularExpressions;
 
 namespace RMBer
@@ -7,12 +6,26 @@ namespace RMBer
     /// <summary>
     /// RMB
     /// </summary>
-    public static class RMB
+    public static class RMBer
     {
         private const string STRING = "#L#E#D#C#K#E#D#C#J#E#D#C#I#E#D#C#H#E#D#C#G#E#D#C#F#E#D#C#.0B0A";
 
         /// <summary>
-        /// ToCapitalRMB
+        /// 全局默认输出方式
+        /// </summary>
+        public static Formatter Formatter { get; private set; } = new Formatter();
+
+        /// <summary>
+        /// 默认配置
+        /// </summary>
+        /// <param name="formatterOptions"></param>
+        public static void Config(Action<Formatter> formatterOptions)
+        {
+            formatterOptions?.Invoke(Formatter);
+        }
+
+        /// <summary>
+        /// 转换成大写人民币金额
         /// </summary>
         /// <param name="number"></param>
         /// <returns></returns>
@@ -22,7 +35,7 @@ namespace RMBer
         }
 
         /// <summary>
-        /// ToCapitalRMB
+        /// 转换成大写人民币金额
         /// </summary>
         /// <param name="number"></param>
         /// <param name="formatter"></param>
@@ -33,7 +46,7 @@ namespace RMBer
         }
 
         /// <summary>
-        /// ToCapitalRMB
+        /// 转换成大写人民币金额
         /// </summary>
         /// <param name="number"></param>
         /// <returns></returns>
@@ -43,7 +56,7 @@ namespace RMBer
         }
 
         /// <summary>
-        /// ToCapitalRMB
+        /// 转换成大写人民币金额
         /// </summary>
         /// <param name="number"></param>
         /// <param name="formatter"></param>
@@ -54,7 +67,7 @@ namespace RMBer
         }
 
         /// <summary>
-        /// ToCapitalRMB
+        /// 转换成大写人民币金额
         /// </summary>
         /// <param name="number"></param>
         /// <returns></returns>
@@ -64,7 +77,7 @@ namespace RMBer
         }
 
         /// <summary>
-        /// ToCapitalRMB
+        /// 转换成大写人民币金额
         /// </summary>
         /// <param name="number"></param>
         /// <param name="formatter"></param>
@@ -75,7 +88,7 @@ namespace RMBer
         }
 
         /// <summary>
-        /// ToCapitalRMB
+        /// 转换成大写人民币金额
         /// </summary>
         /// <param name="number"></param>
         /// <returns></returns>
@@ -85,7 +98,7 @@ namespace RMBer
         }
 
         /// <summary>
-        /// ToCapitalRMB
+        /// 转换成大写人民币金额
         /// </summary>
         /// <param name="number"></param>
         /// <param name="formatter"></param>
@@ -96,7 +109,7 @@ namespace RMBer
         }
 
         /// <summary>
-        /// ToCapitalRMB
+        /// 转换成大写人民币金额
         /// </summary>
         /// <param name="number"></param>
         /// <returns></returns>
@@ -106,7 +119,7 @@ namespace RMBer
         }
 
         /// <summary>
-        /// ToCapitalRMB
+        /// 转换成大写人民币金额
         /// </summary>
         /// <param name="number"></param>
         /// <param name="formatter"></param>
@@ -133,23 +146,18 @@ namespace RMBer
             }
 
             // Format
-            if (null != formatter)
+            formatter = formatter ?? Formatter;
+
+            result = Regex.Replace(result, "元$", $"元{formatter.Zheng}");
+
+            if (formatter.JiaoZheng)
             {
-                result = Regex.Replace(result, "元$", $"元{formatter.Zheng}");
-
-                if (formatter.JiaoZheng)
-                {
-                    result = Regex.Replace(result, "角$", $"角{formatter.Zheng}");
-                }
-
-                if (Yuan.元 != formatter.Yuan)
-                {
-                    result = Regex.Replace(result, "元", $"{formatter.Yuan}");
-                }
+                result = Regex.Replace(result, "角$", $"角{formatter.Zheng}");
             }
-            else
+
+            if (Yuan.元 != formatter.Yuan)
             {
-                result = Regex.Replace(result, "元$", "元整");
+                result = Regex.Replace(result, "元", $"{formatter.Yuan}");
             }
 
             return result;

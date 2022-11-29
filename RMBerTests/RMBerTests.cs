@@ -1,13 +1,19 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RMBer.Enum;
-using System;
-using System.Collections.Generic;
 
 namespace RMBer.Tests
 {
     [TestClass()]
-    public class RMBTests
+    public class RMBerTests
     {
+        static RMBerTests()
+        {
+            RMBer.Config(formatterOptions =>
+            {
+                formatterOptions.Yuan = Yuan.元;
+                formatterOptions.Zheng = Zheng.整;
+            });
+        }
+
         [TestMethod()]
         public void ToCapitalRMBDecimalTest()
         {

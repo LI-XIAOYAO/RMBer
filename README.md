@@ -1,6 +1,18 @@
 # RMBer
 转换成大写人民币金额。
 
+默认配置
+
+> 默认 `new Formatter()` `元` `整`
+````
+// 全局配置
+RMBer.Config(formatterOptions =>
+{
+    formatterOptions.Yuan = Yuan.元;
+    formatterOptions.Zheng = Zheng.整;
+});
+````
+
 Eg：
 ````
 var number = 26_398_888;

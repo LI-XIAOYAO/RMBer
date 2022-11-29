@@ -1,22 +1,32 @@
-﻿using RMBer.Enum;
-using System;
+﻿using System;
 
 namespace RMBer
 {
     /// <summary>
-    /// Formatter
+    /// 格式化输出方式
     /// </summary>
     public class Formatter
     {
-        /// <summary>
-        /// Yuan
-        /// </summary>
-        public Yuan Yuan { get; set; }
+        private Yuan _yuan;
+        private Zheng _zheng;
 
         /// <summary>
-        /// Zheng
+        /// 元 | 圆
         /// </summary>
-        public Zheng Zheng { get; set; }
+        public Yuan Yuan
+        {
+            get => _yuan;
+            set => _yuan = Enum.IsDefined(typeof(Yuan), value) ? value : throw new ArgumentOutOfRangeException();
+        }
+
+        /// <summary>
+        /// 整 | 正
+        /// </summary>
+        public Zheng Zheng
+        {
+            get => _zheng;
+            set => _zheng = Enum.IsDefined(typeof(Zheng), value) ? value : throw new ArgumentOutOfRangeException();
+        }
 
         /// <summary>
         /// 角整，默认元整

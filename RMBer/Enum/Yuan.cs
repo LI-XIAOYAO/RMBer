@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace RMBer.Enum
+﻿namespace RMBer
 {
     /// <summary>
     /// Yuan
